@@ -18,6 +18,7 @@ resources:
 - volumes/redis-data.yaml
 - deployments/guacd.yaml
 - services/guacd.yaml
+- routes/shaw-virtual-desktop-admin.yaml
 
 secretGenerator:
 - envs:
