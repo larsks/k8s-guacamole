@@ -31,11 +31,19 @@ spec:
             - bash
             - /initdb/initdb.sh
       containers:
+        - name: nginx
+          image: docker.io/nginxinc/nginx-unprivileged:1.21
+          ports:
+            - containerPort: 8081
+              name: nginx
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
         - name: guacamole
           image: docker.io/guacamole/guacamole:1.4.0
           ports:
             - containerPort: 8080
-              name: http
+              name: guacamole
           env:
             - name: POSTGRES_DATABASE
               valueFrom:
@@ -61,6 +69,9 @@ spec:
             - name: guacamole-data
               mountPath: /config
       volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config
         - name: guacamole-data
           emptyDir: {}
         - name: guacamole-initdb
