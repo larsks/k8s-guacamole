@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: guacamole
+  labels:
+    component: guacamole
+  annotations:
+    haproxy.router.openshift.io/rewrite-target: /guacamole
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: guacamole
+  tls:
+    termination: edge
