@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: shaw-virtual-desktop
+  annotations:
+    haproxy.router.openshift.io/rewrite-target: /guacamole
+spec:
+  host: shaw-virtual-desktop.apps.ocp-staging.massopen.cloud
+  path: /
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: oauth2-proxy
+  tls:
+    termination: edge

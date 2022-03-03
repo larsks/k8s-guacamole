@@ -10,7 +10,13 @@ resources:
 - services/postgres.yaml
 - services/guacamole.yaml
 - deployments/guacamole.yaml
-- routes/guacamole.yaml
+- routes/shaw-virtual-desktop.yaml
+- deployments/redis.yaml
+- deployments/oauth2-proxy.yaml
+- services/oauth2-proxy.yaml
+- services/redis.yaml
+- volumes/redis-data.yaml
+- routes/shaw-virtual-desktop-api.yaml
 
 secretGenerator:
 - envs:
@@ -19,6 +25,9 @@ secretGenerator:
 - envs:
   - secrets/guacamole.env
   name: guacamole-secret
+- envs:
+  - secrets/oauth2.env
+  name: oauth2-secret
 
 configMapGenerator:
 - envs:
@@ -28,3 +37,6 @@ configMapGenerator:
   - configs/initdb.sh
   - configs/initdb.sql
   name: guacamole-initdb
+- envs:
+  - configs/oauth2.env
+  name: oauth2-config

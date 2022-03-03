@@ -50,6 +50,10 @@ spec:
               value: guacd
             - name: HOME
               value: /config
+            - name: HEADER_ENABLED
+              value: "true"
+            - name: HTTP_AUTH_HEADER
+              value: X-Forwarded-Preferred-Username
           envFrom:
             - secretRef:
                 name: postgres-secret
