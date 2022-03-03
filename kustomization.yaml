@@ -16,6 +16,8 @@ resources:
 - services/oauth2-proxy.yaml
 - services/redis.yaml
 - volumes/redis-data.yaml
+- deployments/guacd.yaml
+- services/guacd.yaml
 
 secretGenerator:
 - envs:
@@ -39,6 +41,6 @@ configMapGenerator:
 - envs:
   - configs/oauth2.env
   name: oauth2-config
-- name: nginx-config
-  files:
-    - default.conf=configs/nginx-default.conf
+- files:
+  - default.conf=configs/nginx-default.conf
+  name: nginx-config
