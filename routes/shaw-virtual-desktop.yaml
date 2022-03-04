@@ -6,6 +6,6 @@ spec:
   host: shaw-virtual-desktop.apps.ocp-staging.massopen.cloud
   to:
     kind: Service
-    name: oauth2-proxy
+    name: guacamole
   tls:
     termination: edge

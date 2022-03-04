@@ -65,6 +65,8 @@ spec:
             - name: HTTP_AUTH_HEADER
               value: X-Forwarded-Preferred-Username
           envFrom:
+            - configMapRef:
+                name: guacamole-config
             - secretRef:
                 name: postgres-secret
           volumeMounts:
