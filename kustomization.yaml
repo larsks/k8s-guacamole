@@ -17,6 +17,7 @@ resources:
 - volumes/redis-data.yaml
 - deployments/guacd.yaml
 - services/guacd.yaml
+- volumes/shared-drives.yaml
 
 secretGenerator:
 - envs:
@@ -28,7 +29,7 @@ secretGenerator:
 
 configMapGenerator:
 - envs:
-    - configs/guacamole.env
+  - configs/guacamole.env
   name: guacamole-config
 - envs:
   - configs/postgres.env

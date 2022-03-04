@@ -17,3 +17,17 @@ spec:
           ports:
             - containerPort: 4822
               name: guacd
+          env:
+            - name: HOME
+              value: /data
+          volumeMounts:
+            - name: guacd-data
+              mountPath: /data
+            - name: shared-drives
+              mountPath: /shared
+      volumes:
+        - name: guacd-data
+          emptyDir: {}
+        - name: shared-drives
+          persistentVolumeClaim:
+            claimName: shared-drives
